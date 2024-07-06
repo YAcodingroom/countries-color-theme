@@ -3,6 +3,7 @@ body {
 	font-size: 0.875rem;
 	font-family: 'Nunito Sans', sans-serif;
 	font-optical-sizing: auto;
+	font-weight: 300;
 	font-style: normal;
 	font-variation-settings: 'wdth' 100, 'YTLC' 500;
 	color: hsl(200, 15%, 8%);
@@ -12,9 +13,11 @@ header,
 .search-bar,
 .region-selector,
 .region-options,
-.country {
+.country,
+.home-btn,
+.border-country a {
 	background-color: hsl(0, 0%, 100%);
-	box-shadow: 0 0 3px 0 #e8e8e8;
+	box-shadow: 0 0 3px 1px #e8e8e8;
 }
 #search::placeholder {
 	color: hsl(0, 0%, 52%);
@@ -32,7 +35,9 @@ body.dark header,
 body.dark .search-bar,
 body.dark .region-selector,
 body.dark .region-options,
-body.dark .country {
+body.dark .country,
+body.dark .home-btn,
+body.dark .border-country a {
 	background-color: hsl(209, 23%, 22%);
 	box-shadow: none;
 }
@@ -47,7 +52,7 @@ body.dark .flag {
 	align-items: center;
 	padding: 1.2rem;
 }
-.navbar > span {
+.navbar > a {
 	font-weight: 600;
 }
 .navbar i {
@@ -56,7 +61,7 @@ body.dark .flag {
 
 /* search & filter */
 main {
-	padding: 1.2rem;
+	padding: 1.2rem 1.5rem;
 }
 .filter-switch {
 	position: relative;
@@ -110,10 +115,16 @@ main {
 	box-shadow: 0 1px 5px 1px #f7f7f7;
 }
 .country-title {
-	margin-bottom: 1rem;
 	padding: 1.5rem 1.5rem 0;
+}
+.country-title,
+.title {
+	margin-bottom: 1rem;
 	font-size: 1.4rem;
 	font-weight: 800;
+}
+.title {
+	margin-top: 2rem;
 }
 .country-content {
 	padding: 0 1.5rem 1.5rem;
@@ -123,6 +134,29 @@ main {
 	font-weight: 600;
 }
 
-.country-content span {
+/* detail */
+.detail p {
+	margin: 0 0 1rem;
+	font-weight: 600;
+}
+.country-content span,
+.detail span {
 	font-weight: 300;
+}
+.location,
+.cultural,
+.border-country {
+	margin-top: 2rem;
+}
+.home-btn {
+	margin: 1rem 0 3rem;
+}
+.home-btn i {
+	margin-right: 0.5rem;
+}
+.home-btn,
+.border-country a {
+	display: inline-block;
+	padding: 0.5rem 1.5rem;
+	border-radius: 3px;
 }
