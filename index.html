@@ -5,13 +5,100 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- css -->
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/style.css">
+
+
+  <!-- google font -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+  </style>
+
+  <!-- font awesome icon -->
+  <script src="https://kit.fontawesome.com/3a1a2f2b55.js" crossorigin="anonymous"></script>
+
+  <!-- js -->
   <script defer src="./js/script.js"></script>
 
   <title>Document</title>
 </head>
 
-<body>
+<body class="">
+  <header>
+    <nav class="navbar">
+      <span>Where in the world?</span>
+      <button class="mode-toggle">
+        <i class="fa-regular fa-moon"></i>
+        Dark Mode
+      </button>
+    </nav>
+  </header>
 
+  <main>
+    <div class="search-bar">
+      <label for="search"><i class="fa-solid fa-magnifying-glass"></i></label>
+      <input id="search" type="text" placeholder="Search for a country...">
+
+    </div>
+
+    <div class="filter-switch">
+      <div class="region-selector">
+        <button>Filter by Region</button>
+        <i class="fa-solid fa-angle-down"></i>
+      </div>
+
+      <ul class="region-options">
+        <li class="option" data-value="africa">Africa</li>
+        <li class="option" data-value="america">America</li>
+        <li class="option" data-value="asia">Asia</li>
+        <li class="option" data-value="europe">Europe</li>
+        <li class="option" data-value="oceania">Oceania</li>
+      </ul>
+    </div>
+
+    <div class="country">
+      <img class="flag" src="https://flagcdn.com/jp.svg" alt="flag">
+      <div class="country-title">Japan</div>
+      <div class="country-content">
+        <p class="population">
+          Population:
+          <span>125836021</span>
+        </p>
+        <p class="region">
+          Region:
+          <span>Asia</span>
+        </p>
+        <p class="capital">
+          Capital:
+          <span>Tokyo</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="country">
+      <img class="flag" src="https://flagcdn.com/kr.svg" alt="flag">
+      <div class="country-title">South Korea</div>
+      <div class="country-content">
+        <p class="population">
+          Population:
+          <span>51780579</span>
+        </p>
+        <p class="region">
+          Region:
+          <span>Asia</span>
+        </p>
+        <p class="capital">
+          Capital:
+          <span>Seoul</span>
+        </p>
+      </div>
+    </div>
+
+
+  </main>
+
+  <footer></footer>
 </body>
 
 </html>
