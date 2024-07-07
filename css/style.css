@@ -15,9 +15,12 @@ header,
 .region-options,
 .country,
 .home-btn,
-.border-country a {
+.border-country button {
 	background-color: hsl(0, 0%, 100%);
 	box-shadow: 0 0 3px 1px #e8e8e8;
+}
+input#search:-internal-autofill-selected {
+	background-color: #fff;
 }
 #search::placeholder {
 	color: hsl(0, 0%, 52%);
@@ -37,7 +40,7 @@ body.dark .region-selector,
 body.dark .region-options,
 body.dark .country,
 body.dark .home-btn,
-body.dark .border-country a {
+body.dark .border-country span {
 	background-color: hsl(209, 23%, 22%);
 	box-shadow: none;
 }
@@ -68,12 +71,12 @@ main {
 	width: 60%;
 }
 .search-bar {
+	display: flex;
 	margin-bottom: 2rem;
 }
-.search-bar,
-.region-selector {
-	padding: 0.8rem 1.6rem;
-	width: 100%;
+.search-bar {
+	display: flex;
+	padding: 0 1.6rem;
 }
 .search-bar,
 .region-selector,
@@ -83,10 +86,20 @@ main {
 .search-bar label {
 	margin-right: 1.5rem;
 }
+.search-bar,
+#search,
+.region-selector {
+	width: 100%;
+}
+.search-bar label,
+#search {
+	padding: 0.8rem 0;
+}
 .region-selector {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	padding: 0.8rem 1.6rem;
 }
 .region-selector,
 .region-options {
@@ -104,7 +117,7 @@ main {
 }
 
 /* country card */
-.country {
+.cards-container .country {
 	margin: 3rem 1.6rem;
 	border-radius: 8px;
 	overflow: hidden;
@@ -155,8 +168,17 @@ main {
 	margin-right: 0.5rem;
 }
 .home-btn,
-.border-country a {
+.border-country .country {
 	display: inline-block;
 	padding: 0.5rem 1.5rem;
 	border-radius: 3px;
+}
+.border-country {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+.border-country > p {
+	margin: 0;
+	width: 100%;
 }
