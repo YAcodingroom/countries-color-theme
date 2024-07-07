@@ -4,6 +4,7 @@ const header = document.querySelector('header')
 const main = document.querySelector('main')
 const search = document.querySelector('#search')
 const cardsContainer = document.querySelector('.cards-container')
+const filter = document.querySelector('.filter-switch')
 
 let isDarkMode = false
 
@@ -32,7 +33,7 @@ const createTags = function (items, isBorder) {
 }
 
 const displayCountries = function (data) {
-	let html
+	let html = ''
 
 	data.forEach((d) => {
 		html += `

@@ -48,6 +48,11 @@ body.dark .flag {
 	box-shadow: none;
 }
 
+/* display */
+.hidden {
+	display: none;
+}
+
 /* header */
 .navbar {
 	display: flex;
@@ -101,6 +106,7 @@ main {
 	align-items: center;
 	padding: 0.8rem 1.6rem;
 }
+.country,
 .region-selector,
 .region-options {
 	cursor: pointer;
@@ -118,7 +124,7 @@ main {
 
 /* country card */
 .cards-container .country {
-	margin: 3rem 1.6rem;
+	margin: 2rem 1.6rem;
 	border-radius: 8px;
 	overflow: hidden;
 }
@@ -162,7 +168,7 @@ main {
 	margin-top: 2rem;
 }
 .home-btn {
-	margin: 1rem 0 3rem;
+	margin: 1rem 0 2rem;
 }
 .home-btn i {
 	margin-right: 0.5rem;
