@@ -70,10 +70,10 @@ const displayDetail = function (data, borders) {
 
 	const html = `
     <div class="detail">
-      <div class="home-btn">
+      <a class="home-btn" href="./index.html">
         <i class="fa-solid fa-arrow-left"></i>
-        <button>Back</button>
-      </div>
+        Back
+      </a>
       <div class="country-detail">
         <img class="flag" src="${data.flags.svg}" alt="flag">
         <div class="title">${data.name.common}</div>
