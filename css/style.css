@@ -188,3 +188,10 @@ main {
 	margin: 0;
 	width: 100%;
 }
+
+/* footer */
+footer {
+	margin-top: 1.2rem;
+	margin-bottom: 0;
+	text-align: center;
+}
