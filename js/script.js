@@ -5,7 +5,11 @@ const main = document.querySelector('main')
 const search = document.querySelector('#search')
 const cardsContainer = document.querySelector('.cards-container')
 const filter = document.querySelector('.filter-switch')
+const options = document.querySelector('.region-options')
 
+const COUNTRY_URL = 'https://restcountries.com/v3.1/name'
+const CODE_URL = 'https://restcountries.com/v3.1/alpha'
+const REGION_URL = 'https://restcountries.com/v3.1/region'
 let isDarkMode = false
 
 // functions
@@ -28,7 +32,7 @@ const createTags = function (items, isBorder) {
 		const tags = itemsArr.map((item) => `<span>${item}</span>`)
 		return tags.join(', ')
 	}
-	console.log(tags)
+
 	return tags
 }
 
@@ -125,13 +129,14 @@ const displayDetail = function (data, borders) {
 	main.innerHTML = html
 }
 
+// get datas
 const getCountryByName = async function (country) {
 	try {
-		const res = await fetch(`https://restcountries.com/v3.1/name/${country}`)
-		if (!res.ok) throw new Error(`Something went wrong! (${res.status})`)
+		const res = await fetch(`${COUNTRY_URL}/${country}`)
+		if (!res.ok) throw new Error(`SOMETHING WENT WRONG! (${res.status})`)
 
 		const data = await res.json()
-		if (!data) throw new Error('Data is not found!')
+		if (!data) throw new Error('DATA IS NOT FOUND!')
 
 		displayCountries(data)
 	} catch (err) {
@@ -141,26 +146,46 @@ const getCountryByName = async function (country) {
 
 const getCountryByCode = async function (code) {
 	try {
-		const res = await fetch(`https://restcountries.com/v3.1/alpha/${code}`)
-		if (!res.ok) throw new Error(`Something went wrong!(${res.status})`)
+		const res = await fetch(`${CODE_URL}/${code}`)
+		if (!res.ok) throw new Error(`SOMETHING WENT WRONG! (${res.status})`)
 
 		const data = await res.json()
-		if (!data) throw new Error('Data is not found!')
+		if (!data) throw new Error('DATA IS NOT FOUND!')
 
 		let borders = []
 		if (data[0].borders) {
 			borders = await Promise.all(
 				data[0].borders.map(async function (border) {
-					const res = await fetch(
-						`https://restcountries.com/v3.1/alpha/${border}`
-					)
-					const borderData = await res.json()
-					return { name: borderData[0].name.common, code: borderData[0].cioc }
+					try {
+						const res = await fetch(`${CODE_URL}/${border}`)
+						if (!res.ok)
+							throw new Error(`SOMETHING WENT WRONG! (${res.status})`)
+
+						const borderData = await res.json()
+						return { name: borderData[0].name.common, code: border }
+					} catch (err) {
+						console.error(`FAILED TO FETCH BORDER COUNTRY ${border}:`, err)
+						return { name: 'Unknown', code: border }
+					}
 				})
 			)
 		}
 
 		displayDetail(data[0], borders)
+	} catch (err) {
+		console.error(err)
+	}
+}
+
+const getCountryByRegion = async function (region) {
+	try {
+		const res = await fetch(`${REGION_URL}/${region}`)
+		if (!res.ok) throw new Error(`SOMETHING WENT WRONG! (${res.status})`)
+
+		const data = await res.json()
+		if (!data) throw new Error('DATA IS NOT FOUND!')
+
+		displayCountries(data)
 	} catch (err) {
 		console.error(err)
 	}
@@ -193,4 +218,17 @@ main.addEventListener('click', (e) => {
 
 	const code = country.dataset.code
 	getCountryByCode(code)
+})
+
+filter.addEventListener('click', (e) => {
+	const selector = e.target.closest('.region-selector')
+	const option = e.target.closest('.option')
+
+	if (selector) options.classList.toggle('hidden')
+
+	if (option) {
+		const region = option.dataset.region
+		options.classList.toggle('hidden')
+		getCountryByRegion(region)
+	}
 })
