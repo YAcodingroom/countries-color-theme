@@ -192,6 +192,13 @@ const getCountryByRegion = async function (region) {
 }
 
 // event handler
+body.addEventListener('click', (e) => {
+	const selector = e.target.closest('.region-selector')
+	const isHidden = options.classList.contains('hidden')
+	if (selector) return
+	if (!isHidden) options.classList.add('hidden')
+})
+
 header.addEventListener('click', (e) => {
 	const toggleBtn = e.target.closest('.mode-toggle')
 	if (!toggleBtn) return
