@@ -233,7 +233,7 @@ footer {
 	}
 	.country-detail .flag {
 		width: 40%;
-		height: 50vh;
+		height: auto;
 	}
 
 	.country-description {
