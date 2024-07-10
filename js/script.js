@@ -76,52 +76,54 @@ const displayDetail = function (data, borders) {
       </a>
       <div class="country-detail">
         <img class="flag" src="${data.flags.svg}" alt="flag">
-        <div class="title">${data.name.common}</div>
-        <div class="location">
-          <p>
-            Native Name:
-            <span>${data.name.official}</span>
-          </p>
-          <p>
-            Population:
-            <span>${toThousands(data.population)}</span>
-          </p>
-          <p>
-            Region:
-            <span>${data.region}</span>
-          </p>
-          <p>
-            Sub Region:
-            <span>${data.subregion}</span>
-          </p>
-          <p>
-            Capital:
-            <span>${data.capital}</span>
-          </p>
-        </div>
+        <div class="country-description">
+          <div class="title">${data.name.common}</div>
+          <div class="location">
+            <p>
+              Native Name:
+              <span>${data.name.official}</span>
+            </p>
+            <p>
+              Population:
+              <span>${toThousands(data.population)}</span>
+            </p>
+            <p>
+              Region:
+              <span>${data.region}</span>
+            </p>
+            <p>
+              Sub Region:
+              <span>${data.subregion}</span>
+            </p>
+            <p>
+              Capital:
+              <span>${data.capital}</span>
+            </p>
+          </div>
 
-        <div class="cultural">
-          <p>
-            Top Level Domain:
-            ${createTags(data.tld, false)}
-          </p>
-          <p>
-            Currencies:
-            <span>${data.currencies[currencyName].name}</span>
-          </p>
-          <p>
-            Languages:
-            ${createTags(data.languages, false)}
-          </p>
-        </div>
+          <div class="cultural">
+            <p>
+              Top Level Domain:
+              ${createTags(data.tld, false)}
+            </p>
+            <p>
+              Currencies:
+              <span>${data.currencies[currencyName].name}</span>
+            </p>
+            <p>
+              Languages:
+              ${createTags(data.languages, false)}
+            </p>
+          </div>
 
-        <div class="border-country">
-          <p>Border Countries:</p>
-          ${
-						borders.length !== 0
-							? createTags(borders, true)
-							: '<span>no borders</span>'
-					}
+          <div class="border-country">
+            <p>Border Countries:</p>
+            ${
+							borders.length !== 0
+								? createTags(borders, true)
+								: '<span>no borders</span>'
+						}
+          </div>
         </div>
       </div>
     </div> 

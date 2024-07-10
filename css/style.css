@@ -195,3 +195,91 @@ footer {
 	margin-bottom: 0;
 	text-align: center;
 }
+
+@media (min-width: 768px) {
+	/* country card */
+	.cards-container {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	}
+}
+
+@media (min-width: 1024px) {
+	/* header */
+	.navbar {
+		padding: 1.5rem 3rem;
+	}
+
+	/* search & filter */
+	main {
+		padding: 2rem 3rem 1.2rem;
+	}
+	.tool-section {
+		display: flex;
+		gap: 1rem;
+	}
+	.search-bar {
+		margin-right: auto;
+		width: 40%;
+	}
+	.filter-switch {
+		width: 20%;
+	}
+
+	/* detail */
+	.country-detail {
+		display: flex;
+		justify-content: space-between;
+	}
+	.country-detail .flag {
+		width: 40%;
+		height: 50vh;
+	}
+
+	.country-description {
+		display: grid;
+		gap: 1.4rem;
+		grid-template-columns: repeat(2, minmax(10px, auto));
+		grid-template-rows: repeat(3, minmax(10px, auto));
+		width: 50%;
+	}
+
+	.detail .title {
+		grid-column: 1 / 3;
+		grid-row: 1 / 2;
+	}
+
+	.detail .location {
+		grid-column: 1 / 2;
+		grid-row: 2 / 3;
+	}
+
+	.detail .cultural {
+		grid-column: 2 / 3;
+		grid-row: 2 / 3;
+	}
+
+	.detail .border-country {
+		grid-column: 1 / 3;
+		grid-row: 3 / 4;
+	}
+
+	.title,
+	.location,
+	.cultural,
+	.border-country {
+		margin: 0;
+	}
+
+	.border-country {
+		display: flex;
+		align-items: center;
+	}
+	.border-country p {
+		width: auto;
+	}
+	/* footer */
+	footer {
+		margin-top: 1.8rem;
+	}
+}
