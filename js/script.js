@@ -7,9 +7,7 @@ const cardsContainer = document.querySelector('.cards-container')
 const filter = document.querySelector('.filter-switch')
 const options = document.querySelector('.region-options')
 
-const COUNTRY_URL = 'https://restcountries.com/v3.1/name'
-const CODE_URL = 'https://restcountries.com/v3.1/alpha'
-const REGION_URL = 'https://restcountries.com/v3.1/region'
+const BASE_URL = 'https://restcountries.com/v3.1'
 let isDarkMode = false
 
 // functions
@@ -134,7 +132,7 @@ const displayDetail = function (data, borders) {
 // get datas
 const getCountryByName = async function (country) {
 	try {
-		const res = await fetch(`${COUNTRY_URL}/${country}`)
+		const res = await fetch(`${BASE_URL}/name/${country}`)
 		if (!res.ok) throw new Error(`SOMETHING WENT WRONG! (${res.status})`)
 
 		const data = await res.json()
@@ -148,7 +146,7 @@ const getCountryByName = async function (country) {
 
 const getCountryByCode = async function (code) {
 	try {
-		const res = await fetch(`${CODE_URL}/${code}`)
+		const res = await fetch(`${BASE_URL}/alpha/${code}`)
 		if (!res.ok) throw new Error(`SOMETHING WENT WRONG! (${res.status})`)
 
 		const data = await res.json()
@@ -159,7 +157,7 @@ const getCountryByCode = async function (code) {
 			borders = await Promise.all(
 				data[0].borders.map(async function (border) {
 					try {
-						const res = await fetch(`${CODE_URL}/${border}`)
+						const res = await fetch(`${BASE_URL}/alpha/${border}`)
 						if (!res.ok)
 							throw new Error(`SOMETHING WENT WRONG! (${res.status})`)
 
@@ -181,7 +179,21 @@ const getCountryByCode = async function (code) {
 
 const getCountryByRegion = async function (region) {
 	try {
-		const res = await fetch(`${REGION_URL}/${region}`)
+		const res = await fetch(`${BASE_URL}/region/${region}`)
+		if (!res.ok) throw new Error(`SOMETHING WENT WRONG! (${res.status})`)
+
+		const data = await res.json()
+		if (!data) throw new Error('DATA IS NOT FOUND!')
+
+		displayCountries(data)
+	} catch (err) {
+		console.error(err)
+	}
+}
+
+const getAllCountries = async function () {
+	try {
+		const res = await fetch(`${BASE_URL}/all`)
 		if (!res.ok) throw new Error(`SOMETHING WENT WRONG! (${res.status})`)
 
 		const data = await res.json()
@@ -241,3 +253,4 @@ filter.addEventListener('click', (e) => {
 		getCountryByRegion(region)
 	}
 })
+getAllCountries()
