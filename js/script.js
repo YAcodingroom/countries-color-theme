@@ -39,7 +39,7 @@ const displayCountries = function (data) {
 
 	data.forEach((d) => {
 		html += `
-      <div class="country" data-code="${d.cioc}">
+      <div class="country" data-code="${d.cioc || d.cca3}">
         <img class="flag" src="${d.flags.svg}" alt="flag">
         <div class="country-title">${d.name.common}</div>
         <div class="country-content">
@@ -106,7 +106,11 @@ const displayDetail = function (data, borders) {
             </p>
             <p>
               Currencies:
-              <span>${data.currencies[currencyName].name}</span>
+              <span>${
+								Array.isArray(currencyName)
+									? createTags(currencyName, false)
+									: data.currencies[currencyName].name
+							}</span>
             </p>
             <p>
               Languages:
@@ -238,6 +242,7 @@ main.addEventListener('click', (e) => {
 	if (!country) return
 
 	const code = country.dataset.code
+
 	getCountryByCode(code)
 })
 
